@@ -2,8 +2,8 @@ PREFIX = /etc/X11
 CWD = $(shell pwd)
 CONFS = $(notdir $(wildcard $(CWD)/xorg.conf.d/*.conf))
 USERID = $(shell id -u)
-all:
-	echo $(HOME)
+HOME = "/home/m3cool"
+
 install: isroot
 	install --mode 0644 --owner=root --group=root $(CWD)/xorg.conf $(PREFIX)/xorg.conf
 	@for conf in `echo $(CONFS)`; do\
