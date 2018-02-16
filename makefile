@@ -11,6 +11,7 @@ install: isroot
 		install --mode 0644 --owner=root --group=root $(CWD)/xorg.conf.d/$$conf $(PREFIX)/xorg.conf.d/$$conf;\
 	done
 	ln -s Xresources $(HOME)/.Xresources
+	ln -s xinitrc $(HOME)/.xinitrc
 
 isroot:
 	@if [ $(USERID) -ne 0 ]; then\
@@ -25,3 +26,4 @@ uninstall: isroot
 		rm -rf $(PREFIX)/xorg.conf.d/$$conf;\
 	done
 	unlink $(HOME)/.Xresources
+	unlink $(HOME)/.xinitrc
