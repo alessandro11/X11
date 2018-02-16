@@ -141,6 +141,8 @@ URxvt*color2:  #00AA00 // green
 !URxvt*color10: #00FF00 // green
 !URxvt*color11: #FFFF00 // yellow
 !URxvt*color12: #6464FF // blue
+! Directory color
+URxvt*color12: #FFFFFF // white
 !URxvt*color13: #FF00FF // magenta
 !URxvt*color14: #00FFFF // cyan
 !URxvt*color15: #FFFFFF // white
