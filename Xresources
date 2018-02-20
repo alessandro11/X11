@@ -11,7 +11,7 @@ Xcursor.size:  4
 Xft.antialias:  true
 Xft.rgba:       rgb
 Xft.hinting:    true
-Xft.autohint:		false
+Xft.autohint:	false
 Xft.hintstyle:	hintfull
 Xft.lcdfilter:	lcddefault
 
@@ -41,7 +41,7 @@ URxvt*fadeColor:        grey
 
 ! shading - 0 to 99 darkens, 101 to 200 lightens.
 !   Don t use with tintColor; just use a darker or lighter color instead.
-URxvt*shading:          20
+URxvt*shading:          5
 
 ! scrollback buffer lines - 65535 is max on most machines (64 is default)
 URxvt*saveLines:        2000
