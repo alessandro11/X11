@@ -37,8 +37,8 @@ URxvt*transparent:      true
 !     http://www.nisrv.com/drupal/?q=node/11
 !     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
 URxvt*tintColor:        green
-URxvt*fading:           99
-URxvt*fadeColor:        darkgreen
+URxvt*fading:           50
+!URxvt*fadeColor:        darkgreen
 
 ! shading - 0 to 99 darkens, 101 to 200 lightens.
 !   Don t use with tintColor; just use a darker or lighter color instead.
@@ -68,9 +68,9 @@ URxvt*cursorColor:      green
 !URxvt.*boldFont: xft:DejaVu Sans Mono:style=bold:pixelsize=12:antialias=true:hinting=true
 !URxvt.*italicFont: xft:DejaVu Sans Mono:style=italic:pixelsize=12:antialias=true:hinting=true
 
-URxvt.*font: xft:inconsolata:style=normal:pixelsize=15:antialias=true:hinting=true
-URxvt.*boldFont: xft:inconsolata:style=normal:pixelsize=15:antialias=true:hinting=true
-URxvt.*italicFont: xft:inconsolata:style=italic:pixelsize=15:antialias=true:hinting=true
+URxvt.*font: xft:inconsolata:style=normal:pixelsize=16:antialias=true:hinting=true
+URxvt.*boldFont: xft:inconsolata:style=normal:pixelsize=16:antialias=true:hinting=true
+URxvt.*italicFont: xft:inconsolata:style=italic:pixelsize=16:antialias=true:hinting=true
 
 !
 ! This is to work with perl extention (resize-font) increase and decrease font size.
