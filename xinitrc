@@ -20,11 +20,14 @@ xset -b	&									    # switch off speaker
 xbacklight -set 80%
 
 # load bindkey from ~/.xbindkeys
-#xbindkeys
+#xbindkeys 
 
-# Is thre the warrior mechanical keyboard?
+### Check if the keyboard warrior (mechanical)
+# is connected.
 if lsusb -d "0c45:760a" >/dev/null 2>&1; then
-	ACTION='add' DELAY=y /usr/local/bin/setkb.sh	# set the keyboard
+	ACTION='add' DELAY=y /usr/local/bin/setkb.sh us		
+else
+	syndaemon -i 0.5 -t -K -R -d
 fi
 
 
