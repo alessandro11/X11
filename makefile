@@ -5,13 +5,14 @@ USERID = $(shell id -u)
 HOME = "/home/m3cool"
 
 install: isroot
-	install --mode 0644 --owner=root --group=root $(CWD)/xorg.conf $(PREFIX)/xorg.conf
+	-ln -s $(CWD)/xorg.conf $(PREFIX)/xorg.conf
 	@for conf in `echo $(CONFS)`; do\
-		echo "Installing $(PREFIX)/$$conf...";\
-		install --mode 0644 --owner=root --group=root $(CWD)/xorg.conf.d/$$conf $(PREFIX)/xorg.conf.d/$$conf;\
+		echo "ln -s  $(CWD)/xorg.conf.d/$$conf $(PREFIX)/xorg.conf.d/$$conf...";\
+		ln -s $(CWD)/xorg.conf.d/$$conf $(PREFIX)/xorg.conf.d/$$conf;\
 	done
-	ln -s Xresources $(HOME)/.Xresources
-	ln -s xinitrc $(HOME)/.xinitrc
+
+	-ln -s $(CWD)/Xresources $(HOME)/.Xresources
+	-ln -s $(CWD)/xinitrc $(HOME)/.xinitrc
 
 isroot:
 	@if [ $(USERID) -ne 0 ]; then\
@@ -20,10 +21,11 @@ isroot:
 	fi
 
 uninstall: isroot
-	rm -rf $(PREFIX)/xorg.conf
+	-unlink $(PREFIX)/xorg.conf
 	@for conf in $(CONFS); do\
-		echo "removing $$conf...";\
-		rm -rf $(PREFIX)/xorg.conf.d/$$conf;\
+		echo "unlink $(PREFIX)/xorg.conf.d/$$conf...";\
+		unlink $(PREFIX)/xorg.conf.d/$$conf;\
 	done
-	unlink $(HOME)/.Xresources
-	unlink $(HOME)/.xinitrc
+
+	-unlink $(HOME)/.Xresources
+	-unlink $(HOME)/.xinitrc
