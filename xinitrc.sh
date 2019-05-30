@@ -29,8 +29,13 @@ IsDP1_1366x768() {
 }
 
 IsBatteryPlugged() {
-    [ -d "/sys/class/power_supply/BAT0" ] && return 0;
+    [ -d "/sys/class/power_supply/BAT0" ] && return 0
 
     return 1;
 }
 
+IsBatteryDischarging() {
+    [ "` cat /sys/class/power_supply/BAT0/status`" == "Discharging" ] && return 0;
+
+    return 1;
+}
