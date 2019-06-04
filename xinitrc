@@ -36,6 +36,8 @@ xbindkeys
 if ! lsusb -d "0c45:760a" >/dev/null 2>&1; then
 	#ACTION='add' DELAY=y /usr/local/bin/setkb.sh
 	syndaemon -i 0.5 -t -K -R -d
+    # syndaemon does not work if psmouse module is up
+    modprobe -r psmouse
 fi
 
 CONF="$HOME/.config/i3/config-eDP1"
