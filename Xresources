@@ -184,12 +184,12 @@ URxvt.*italicFont: xft:inconsolata:style=italic:pixelsize=16:antialias=true:hint
 *color15:               S_base3
 
 ! scrollbar - true (default) or false
-!URxvt*scrollBar: false
+URxvt*scrollBar: false
 ! scrollbar position - left=false (default) or right=true
-URxvt*scrollBar_right: true
+!URxvt*scrollBar_right: true
 ! scrollbar style - rxvt (default), plain, next, or xterm
-URxvt*scrollstyle: plain
-urxvt*secondaryScroll: true
+!URxvt*scrollstyle: plain
+!urxvt*secondaryScroll: true
 
 ! Set locale for the terminal.
 URxvt*imLocale: en_US.utf8
