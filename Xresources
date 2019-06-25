@@ -15,6 +15,7 @@
 #define S_blue          #268bd2
 #define S_cyan          #2aa198
 #define S_green         #859900
+#define S_dark_gray     #182122
 
 !
 ! Xcursor --------------------------------------------------------------------
@@ -167,9 +168,9 @@ URxvt.*italicFont: xft:inconsolata:style=italic:pixelsize=16:antialias=true:hint
 *color3:                S_yellow
 *color11:               S_base00
 
-!! blue dark/light
-*color4:                S_blue
-*color12:               S_base0
+!! blue dark/
+*color4:                blue
+*color12:               S_base2
 
 !! magenta dark/light
 *color5:                S_magenta
@@ -203,7 +204,7 @@ URxvt.iso14755: False
 !
 ! Make an link clickable
 URxvt.perl-lib:			/usr/lib/urxvt/perl
-URxvt*url-launcher:     /usr/bin/firefox --new-tab
+URxvt*url-launcher:     /usr/bin/firefox
 URxvt*underlineURLs:    True
 URxvt*matcher.button:   1 
 URxvt*colorUL:          #19cae3
