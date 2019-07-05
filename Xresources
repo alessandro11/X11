@@ -218,7 +218,7 @@ URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
 URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
 URxvt.clipboard.copycmd:        xsel -ib
 URxvt.clipboard.pastecmd:       xsel -ob
-URxvt.perl-ext-common:        default,matcher,clipboard,keyboard-select,tabbed,resize-font
+URxvt.perl-ext-common:        default,matcher,clipboard,keyboard-select,tabbed
 
 !
 ! Bind keys
