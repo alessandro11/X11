@@ -49,7 +49,7 @@ if IsBatteryPlugged -a IsBatteryDischarging; then
 fi
 
 ### Set scale since 4K monitors are too small.
-xrandr --output eDP1 --scale 0.4x0.4 --output DP1 --scale 0.5x0.5
+xrandr --output eDP1 --scale 0.5x0.5 --output DP1 --scale 0.7x0.7
 
 # starts the window manager
 exec /usr/bin/i3 -c "$CONF"
