@@ -51,5 +51,11 @@ fi
 ### Set scale since 4K monitors are too small.
 xrandr --output eDP1 --scale 0.5x0.5 --output DP1 --scale 0.7x0.7
 
+### Set themes for GTK{2,3}
+# GTK 2
+#export GTK2_RC_FILES=$HOME/.themes/Windows-3.11-1.0/gtk-2.0/gtkrc
+# GTK 3
+#export GTK_THEME=$HOME/.themes/Windows-3.11-1.0/gtk-3.0
+
 # starts the window manager
 exec /usr/bin/i3 -c "$CONF"
