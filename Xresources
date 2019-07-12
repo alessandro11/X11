@@ -40,8 +40,8 @@ URxvt.letterSpace: 1
 !URxvt*foreground:       #00D000
 !URxvt*foreground:       gray
 
-*background:            S_base03
-*foreground:            S_base0
+*background:            black
+*foreground:            #00aa00
 *fadeColor:             S_base03
 *cursorColor:           S_base1
 
@@ -69,7 +69,7 @@ URxvt*cursorColor:      green
 !
 ! Xft settings ---------------------------------------------------------------
 !
-*dpi:           120
+*dpi:           180
 Xft.antialias:  1
 Xft.hinting:    1
 Xft.rgba:       rgb
@@ -98,9 +98,9 @@ Xft.lcdfilter:	lcddefault
 !
 ! Xft: Inconsolata fonts
 !  from internet
-URxvt.*font: xft:inconsolata:style=normal:pixelsize=16:antialias=true:hinting=true
-URxvt.*boldFont: xft:inconsolata:style=normal:pixelsize=16:antialias=true:hinting=true
-URxvt.*italicFont: xft:inconsolata:style=italic:pixelsize=16:antialias=true:hinting=true
+URxvt.*font: xft:inconsolata:style=normal:pixelsize=18:antialias=true:hinting=true
+URxvt.*boldFont: xft:inconsolata:style=normal:pixelsize=18:antialias=true:hinting=true
+URxvt.*italicFont: xft:inconsolata:style=italic:pixelsize=18:antialias=true:hinting=true
 
 !
 ! Xft: Liberation fonts
@@ -274,7 +274,7 @@ xterm*background:       black
 ! **************************************************************
 ! Evince
 ! **************************************************************
-Evince*font:  xft:DejaVu Sans Mono:style=Normal:pixelsize=11:antialias=true:hinting=true
+Evince*font:  xft:DejaVu Sans Mono:style=Normal:pixelsize=10:antialias=true:hinting=true
 
 
 ! **************************************************************
