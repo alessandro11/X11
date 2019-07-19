@@ -20,8 +20,8 @@
 !
 ! Xcursor --------------------------------------------------------------------
 !
-Xcursor.theme: 				Vanilla-DMZ-AA
-Xcursor.size:  				16
+Xcursor.theme: 				whiteglass
+Xcursor.size:  				32
 URxvt*cursorBlink:      	true
 URxvt*mouseWheelScrollPage: true
 
@@ -30,7 +30,7 @@ URxvt*mouseWheelScrollPage: true
 ! **************************************************************
 URxvt*termName: rxvt-unicode-256color
 URxvt*.bitdepth: 32
-URxvt.letterSpace: 1
+URxvt.letterSpace: 0
 
 !URxvt*inheritPixmap:    False
 ! background color (prior to tinting) (default is white)
@@ -44,7 +44,6 @@ URxvt.letterSpace: 1
 *foreground:            #00aa00
 *fadeColor:             S_base03
 *cursorColor:           S_base1
-
 
 ! transparency - true or false (default)
 !URxvt*transparent:      true
@@ -69,8 +68,15 @@ URxvt*cursorColor:      green
 !
 ! Xft settings ---------------------------------------------------------------
 !
-*dpi:           180
-Xft.antialias:  1
+#if SCREEN_NUM == 0
+Xft.dpi: 300
+Xft.antialias: 0
+#endif
+
+#if SCREEN_NUM == 1
+Xft.dpi:  300
+#endif
+
 Xft.hinting:    1
 Xft.rgba:       rgb
 Xft.autohint: 	0
@@ -98,9 +104,9 @@ Xft.lcdfilter:	lcddefault
 !
 ! Xft: Inconsolata fonts
 !  from internet
-URxvt.*font: xft:inconsolata:style=normal:pixelsize=18:antialias=true:hinting=true
-URxvt.*boldFont: xft:inconsolata:style=normal:pixelsize=18:antialias=true:hinting=true
-URxvt.*italicFont: xft:inconsolata:style=italic:pixelsize=18:antialias=true:hinting=true
+URxvt.*font: xft:inconsolata:style=normal:size=8:antialias=true:hinting=true
+URxvt.*boldFont: xft:inconsolata:style=normal:size=8:antialias=true:hinting=true
+URxvt.*italicFont: xft:inconsolata:style=italic:size=8:antialias=true:hinting=true
 
 !
 ! Xft: Liberation fonts
@@ -274,12 +280,4 @@ xterm*background:       black
 ! **************************************************************
 ! Evince
 ! **************************************************************
-Evince*font:  xft:DejaVu Sans Mono:style=Normal:pixelsize=10:antialias=true:hinting=true
-
-
-! **************************************************************
-! unetbootin
-! **************************************************************
-!UNetbootin*foreground:  black
-!UNetbootin*background:  grey
-UNetbootin*font:  xft:DejaVu Sans Mono:style=Normal:pixelsize=12:antialias=true:hinting=true
+Evince*font:  xft:inconsolata:style=Normal:size=10:antialias=true:hinting=true
