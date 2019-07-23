@@ -52,6 +52,7 @@ fi
 # Create set of monitors, it presents as an
 # single monitor.
 # xrandr --setmonitor mysetmonitors auto eDP1,DP1
+xrandr --output DP1 --primary
 
 ### Set scale since 4K monitors are too small.
 #xrandr --output eDP1 --scale 0.5x0.5 --output DP1 --scale 0.7x0.7
