@@ -151,8 +151,8 @@ URxvt*italicFont: xft:Hack:style=italic:size=8:antialias=true:hinting=true
 *color3:                S_yellow
 *color11:               S_base00
 
-!! blue dark/
-*color4:                blue
+!! blue dark/light
+*color4:                #000033
 *color12:               S_base2
 
 !! magenta dark/light
