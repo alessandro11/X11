@@ -102,34 +102,11 @@ Xft.lcdfilter:	lcddefault
 !URxvt*italicFont: xft:DejaVu Sans Mono:italic:pixelsize=15:antialias=true:hinting=true
 
 !
-! Xft: Inconsolata fonts
+! Xft: fonts
 !  from internet
-URxvt.*font: xft:inconsolata:style=normal:size=8:antialias=true:hinting=true
-URxvt.*boldFont: xft:inconsolata:style=normal:size=8:antialias=true:hinting=true
-URxvt.*italicFont: xft:inconsolata:style=italic:size=8:antialias=true:hinting=true
-
-!
-! Xft: Liberation fonts
-!  Fedora/debian packages: liberation-mono-fonts/ttf-liberation
-!URxvt*font: xft:Liberation Mono:pixelsize=13:antialias=true:hinting=true
-!URxvt*boldFont: xft:Liberation Mono:bold:pixelsize=13:antialias=true:hinting=true
-!
-! Xft: Terminus fonts
-!  Fedora/debian packages: terminus-fonts/xfonts-terminus
-!URxvt*font: xft:terminus:pixelsize=15
-!URxvt*boldFont: xft:terminus:bold:pixelsize=15
-
-! Traditional fonts - a more traditional font setup in lieu of xft
-!URxvt*font:-*-courier-medium-r-normal-*-14-*-*-*-*-*-iso8859-1
-!URxvt*boldFont:-*-courier-bold-r-normal-*-14-*-*-*-*-*-iso8859-1
-
-!
-! Font added by mysef
-!
-!URxvt*font:             xft:-misc-fixed-medium-r-normal-*-13-100-100-100-c-80-iso8859-1
-!Urxvt*boldfont:         -misc-fixed-bold-r-normal-*-13-100-100-100-c-80-iso8859-1
-!Urxvt*italicFont:       -misc-fixed-medium-o-normal-*-13-120-75-75-c-80-iso8859-1
-!Urxvt*boldItalicFont:   xft:Bitstream Vera Sans Mono:bold:italic:autohint=true
+URxvt*font: xft:Hack:style=normal:size=8:antialias=true:hinting=true
+URxvt*boldFont: xft:Hack:style=normal:size=8:antialias=true:hinting=true
+URxvt*italicFont: xft:Hack:style=italic:size=8:antialias=true:hinting=true
 
 !
 ! Table of colors
