@@ -104,9 +104,9 @@ Xft.lcdfilter:	lcddefault
 !
 ! Xft: fonts
 !  from internet
-URxvt*font: xft:Hack:style=normal:size=8:antialias=true:hinting=true
-URxvt*boldFont: xft:Hack:style=normal:size=8:antialias=true:hinting=true
-URxvt*italicFont: xft:Hack:style=italic:size=8:antialias=true:hinting=true
+URxvt*font: xft:Hack:style=normal:size=7:antialias=true:hinting=true
+URxvt*boldFont: xft:Hack:style=normal:size=7:antialias=true:hinting=true
+URxvt*italicFont: xft:Hack:style=italic:size=7:antialias=true:hinting=true
 
 !
 ! Table of colors
