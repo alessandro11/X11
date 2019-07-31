@@ -30,7 +30,7 @@ URxvt*mouseWheelScrollPage: true
 ! **************************************************************
 URxvt*termName: rxvt-unicode-256color
 URxvt*.bitdepth: 32
-URxvt.letterSpace: 0
+URxvt.letterSpace: -1
 
 !URxvt*inheritPixmap:    False
 ! background color (prior to tinting) (default is white)
@@ -208,18 +208,18 @@ URxvt.perl-ext-common:        default,matcher,clipboard,keyboard-select,tabbed
 !
 URxvt.keysym.Control-Left: \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
-!URxvt*keysym.Home: \033[1~
-!URxvt*keysym.End: \033[4~
-!URxvt.keysym.Home: \033OH
-!URxvt.keysym.End:  \033OF
-!URxvt.keysym.KP_Home: \033OH
-!URxvt.keysym.KP_End:  \033OF
+! URxvt*keysym.Home: \033[1~
+! URxvt*keysym.End: \033[4~
+! URxvt.keysym.Home: \033OH
+! URxvt.keysym.End:  \033OF
+! URxvt.keysym.KP_Home: \033OH
+! URxvt.keysym.KP_End:  \033OF
 !URxvt.keysym.C-Up:     perl:font-size:increase
 !URxvt.keysym.C-Down:   perl:font-size:decrease
 !URxvt.keysym.C-S-Up:   perl:font-size:incglobal
 !URxvt.keysym.C-S-Down: perl:font-size:decglobal
-!URxvt.keysym.M-C-1: command:\033]710;Inconsolata\007\033]711;Inconsolata\007
-!URxvt.keysym.M-C-2: command:\033]710;9x15bold\007\033]711;9x15bold\007
+URxvt.keysym.M-C-1: command:\033]710;Inconsolata\007\033]711;Inconsolata\007
+URxvt.keysym.M-C-2: command:\033]710;9x15bold\007\033]711;9x15bold\007
 
 ! **************************************************************
 ! XLOCK
@@ -231,7 +231,7 @@ xlock.mode:             blank
 ! XTERM
 ! **************************************************************
 !xterm*VT100.geometry:   80x25
-xterm*faceName:         DejaVu Sans Mono:pixelsize=12
+xterm*faceName:         DejaVu Sans Mono:size=8
 xterm*dynamicColors:    true
 xterm*utf8:             2
 xterm*eightBitInput:    true
