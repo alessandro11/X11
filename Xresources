@@ -152,7 +152,7 @@ URxvt*italicFont: xft:Hack:style=italic:size=7:antialias=true:hinting=true
 *color11:               S_base00
 
 !! blue dark/light
-*color4:                #000033
+*color4:                #000099
 *color12:               S_base2
 
 !! magenta dark/light
