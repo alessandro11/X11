@@ -34,10 +34,10 @@ xbindkeys
 ### Check if the keyboard warrior (mechanical)
 # is connected.
 if ! lsusb -d "0c45:760a" >/dev/null 2>&1; then
-	#ACTION='add' DELAY=y /usr/local/bin/setkb.sh
-	syndaemon -i 0.5 -t -K -R -d
-    # syndaemon does not work if psmouse module is up
-    modprobe -r psmouse
+   #ACTION='add' DELAY=y /usr/local/bin/setkb.sh
+   syndaemon -i 0.5 -t -K -R -d
+   # syndaemon does not work if psmouse module is up
+   modprobe -r psmouse
 fi
 
 CONF="$HOME/.config/i3/config-eDP1"
@@ -56,6 +56,10 @@ xrandr --output DP1 --primary
 
 ### Set scale since 4K monitors are too small.
 #xrandr --output eDP1 --scale 0.5x0.5 --output DP1 --scale 0.7x0.7
+
+###
+# Load DISPLAY and XAUTHORITY in systemd env
+/etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
 # starts the window manager
 exec /usr/bin/i3 -c "$CONF"
