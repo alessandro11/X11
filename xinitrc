@@ -13,7 +13,7 @@ source ~/.xinitrc-functions.sh
 xrdb -load ~/.Xresources
 
 # Manage transparency
-#xcompmgr &
+xcompmgr &
 
 #xloadimage -fork -fullscreen -onroot ~/.arch-linux_00444952.jpg
 feh --bg-fill ~/.wallpaper/archlinux-leder-arCh-asKaliLogo.jpg
