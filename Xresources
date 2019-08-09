@@ -1,5 +1,6 @@
 #define S_base03        #002b36
-#define S_base02        #073642
+!#define S_base02        #073642
+#define S_base02        #073945
 #define S_base01        #586e75
 #define S_base00        #657b83
 #define S_base0         #839496
@@ -30,7 +31,7 @@ URxvt*mouseWheelScrollPage: true
 ! **************************************************************
 URxvt*termName: rxvt-unicode-256color
 URxvt*.bitdepth: 32
-URxvt.letterSpace: -1
+URxvt.letterSpace: 0
 
 !URxvt*inheritPixmap:    False
 ! background color (prior to tinting) (default is white)
@@ -70,7 +71,7 @@ URxvt*cursorColor:      green
 !
 #if SCREEN_NUM == 0
 Xft.dpi: 300
-Xft.antialias: 0
+Xft.antialias: 1
 #endif
 
 #if SCREEN_NUM == 1
@@ -152,7 +153,7 @@ URxvt*italicFont: xft:Hack:style=italic:size=7:antialias=true:hinting=true
 *color11:               S_base00
 
 !! blue dark/light
-*color4:                #000099
+*color4:                #007acc
 *color12:               S_base2
 
 !! magenta dark/light
