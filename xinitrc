@@ -4,19 +4,22 @@
 # Executed by startx (run your window manager from here)
 #
 
-source ~/.xinitrc.sh
+VIDEO_OUT2="DP1"
+VIDEO_OUT2_ENABLED=-1
+
+source ~/.xinitrc-functions.sh
 
 # Laod x resources
 xrdb -load ~/.Xresources
 
 # Manage transparency
-xcompmgr &
+#xcompmgr &
 
 #xloadimage -fork -fullscreen -onroot ~/.arch-linux_00444952.jpg
-feh --bg-fill ~/.arch-wallpaper2.png
+feh --bg-fill ~/.wallpaper/system-failure.png
 
 # Sets the default cursor.
-xsetroot -cursor_name left_ptr
+#xsetroot -cursor_name left_ptr
 
 # Switch off speaker.
 xset -b
@@ -43,7 +46,11 @@ fi
 CONF="$HOME/.config/i3/config-eDP1"
 if IsDP_1Connected; then
     CONF="$CONF-DP1"
+    VIDEO_OUT2_ENABLED=0
+else
+    VIDEO_OUT2_ENABLED=1
 fi
+
 if IsBatteryPlugged -a IsBatteryDischarging; then
     CONF="$CONF-BAT"
 fi
@@ -52,10 +59,11 @@ fi
 # Create set of monitors, it presents as an
 # single monitor.
 # xrandr --setmonitor mysetmonitors auto eDP1,DP1
-xrandr --output DP1 --primary
+[ $VIDEO_OUT2_ENABLED -eq 0 ] && \
+    xrandr --output DP1 --primary
 
 ### Set scale since 4K monitors are too small.
-#xrandr --output eDP1 --scale 0.5x0.5 --output DP1 --scale 0.7x0.7
+xrandr --output eDP1 --scale 0.8x0.8
 
 ###
 # Load DISPLAY and XAUTHORITY in systemd env
