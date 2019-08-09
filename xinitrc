@@ -16,7 +16,7 @@ xrdb -load ~/.Xresources
 #xcompmgr &
 
 #xloadimage -fork -fullscreen -onroot ~/.arch-linux_00444952.jpg
-feh --bg-fill ~/.wallpaper/system-failure.png
+feh --bg-fill ~/.wallpaper/archlinux-leder-arCh-asKaliLogo.jpg
 
 # Sets the default cursor.
 #xsetroot -cursor_name left_ptr
