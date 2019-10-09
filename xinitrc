@@ -15,9 +15,6 @@ xrdb -load ~/.Xresources
 # Manage transparency
 xcompmgr &
 
-#xloadimage -fork -fullscreen -onroot ~/.arch-linux_00444952.jpg
-feh --bg-fill ~/.wallpaper/archlinux-leder-arCh-asKaliLogo.jpg
-
 # Sets the default cursor.
 #xsetroot -cursor_name left_ptr
 
@@ -32,17 +29,28 @@ xset -b
 xbacklight -set 80%
 
 # load bindkey from ~/.xbindkeys
-xbindkeys 
+xbindkeys
 
+:> /tmp/log
+exec 4>> /tmp/log
+exec 5>> /tmp/log
+exec 1>&4
+exec 2>&5
+set -x
+/usr/bin/id
 ### Check if the keyboard warrior (mechanical)
 # is connected.
 if ! lsusb -d "0c45:760a" >/dev/null 2>&1; then
    #ACTION='add' DELAY=y /usr/local/bin/setkb.sh
-   syndaemon -i 0.5 -t -K -R -d
+   syndaemon -i 0.5 -K -R -d
    # syndaemon does not work if psmouse module is up
    modprobe -r psmouse
 fi
-
+set +x
+exec 4>&1
+exec 5>&2
+exec 4>&-
+exec 5>&-
 CONF="$HOME/.config/i3/config-eDP1"
 if IsDP_1Connected; then
     CONF="$CONF-DP1"
@@ -63,7 +71,13 @@ fi
     xrandr --output DP1 --primary
 
 ### Set scale since 4K monitors are too small.
-xrandr --output eDP1 --scale 0.8x0.8
+#xrandr --output eDP1 --scale 0.75x0.75 --left
+xrandr --output eDP1 --scale 0.75x0.75 --output DP1 --scale 0.95x0.95 --right-of eDP1
+
+#
+# Set wallpaper; set after redimentioning the display.
+#
+feh --bg-fill ~/.wallpaper/archlinux-leder-arCh-asKaliLogo.jpg
 
 ###
 # Load DISPLAY and XAUTHORITY in systemd env
