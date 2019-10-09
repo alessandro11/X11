@@ -1,7 +1,8 @@
 #define S_base03        #002b36
 !#define S_base02        #073642
-#define S_base02        #073945
-#define S_base01        #586e75
+#define S_base02        #073642
+!#define S_base01        #586e75
+#define S_base01        #637b83
 #define S_base00        #657b83
 #define S_base0         #839496
 #define S_base1         #93a1a1
@@ -41,10 +42,8 @@ URxvt.letterSpace: 0
 !URxvt*foreground:       #00D000
 !URxvt*foreground:       gray
 
-*background:            black
-*foreground:            #00aa00
-*fadeColor:             S_base03
-*cursorColor:           S_base1
+URxvt*foreground:       #00aa00
+URxvt*fadeColor:        S_base03
 
 ! transparency - true or false (default)
 URxvt*transparent:      true
@@ -69,13 +68,22 @@ URxvt*cursorColor:      green
 !
 ! Xft settings ---------------------------------------------------------------
 !
+! Setting DPI manually
+! Note: While you can set any dpi you like and applications using Qt and GTK
+! will scale accordingly, it is recommended to set it to 96, 120 (25% higher),
+! 144 (50% higher), 168 (75% higher), 192 (100% higher) etc., to reduce scaling
+! artifacts to GUI that use bitmaps. Reducing it below 96 dpi may not reduce
+! size of graphical elements of GUI as typically the lowest dpi the icons are
+! made for is 96.
+!
 #if SCREEN_NUM == 0
-Xft.dpi: 262
+Xft.dpi: 225
 Xft.antialias: 1
 #endif
 
 #if SCREEN_NUM == 1
-Xft.dpi:  300
+#Xft.dpi:  300
+Xft.dpi:  96
 #endif
 
 Xft.hinting:    1
@@ -146,6 +154,7 @@ URxvt*italicFont: xft:Hack:style=italic:size=7:antialias=true:hinting=true
 
 !! green dark/light
 *color2:                S_green
+
 *color10:               S_base01
 
 !! yellow dark/light
@@ -153,7 +162,8 @@ URxvt*italicFont: xft:Hack:style=italic:size=7:antialias=true:hinting=true
 *color11:               S_base00
 
 !! blue dark/light
-*color4:                #007acc
+!*color4:                #007acc
+*color4:                #004d80
 *color12:               S_base2
 
 !! magenta dark/light
@@ -182,7 +192,7 @@ URxvt*imLocale: en_US.utf8
 ! Unset the visual bell false (default).
 URxvt*visualBell: false
 
-URxvt.iso14755: False 
+!URxvt.iso14755: False 
 !
 !-*- Perl extensions -*-
 !
@@ -209,8 +219,8 @@ URxvt.perl-ext-common:        default,matcher,clipboard,keyboard-select,tabbed
 !
 URxvt.keysym.Control-Left: \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
-! URxvt*keysym.Home: \033[1~
-! URxvt*keysym.End: \033[4~
+URxvt*keysym.Home: \033[1~
+URxvt*keysym.End: \033[4~
 ! URxvt.keysym.Home: \033OH
 ! URxvt.keysym.End:  \033OF
 ! URxvt.keysym.KP_Home: \033OH
