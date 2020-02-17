@@ -12,7 +12,7 @@ enable_debug() {
     exec 2>&5
     set -x
 }
-# enable_debug
+enable_debug
 
 VIDEO_OUT2="DP1"
 VIDEO_OUT2_ENABLED=-1
@@ -47,7 +47,7 @@ xmodmap -e "keycode 134 = bar"
 # is connected.
 if ! lsusb -d "0c45:760a" >/dev/null 2>&1; then
    #ACTION='add' DELAY=y /usr/local/bin/setkb.sh
-   syndaemon -i 0.3 -K -R -d & disown
+   syndaemon -i 0.3 -K -R -d
    # syndaemon does not work if psmouse module is up
    sudo modprobe -r psmouse
 fi
@@ -73,7 +73,7 @@ fi
 
 ### Set scale since 4K monitors are too small.
 #xrandr --output eDP1 --scale 0.75x0.75 --left
-xrandr --output eDP1 --scale 0.75x0.75 --output DP1 --scale 0.95x0.95 --right-of eDP1
+xrandr --output eDP1 --mode 3200x1800 --scale 0.75x0.75 --output DP1 --mode 3840x2160 --right-of eDP1
 
 #
 # Set wallpaper; set after redimentioning the display.
@@ -91,7 +91,9 @@ disable_debug() {
     exec 4>&-
     exec 5>&-
 }
-#disable_debug
+disable_debug
 
 # starts the window manager
 exec /usr/bin/i3 -c "$CONF"
+
+disable_debug
