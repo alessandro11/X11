@@ -21,6 +21,7 @@ source ~/.xinitrc-functions.sh
 
 # Laod x resources
 xrdb -load ~/.Xresources
+xrdb -merge ~/solarized/xresources/solarized
 
 # Manage transparency
 xcompmgr &
@@ -78,7 +79,7 @@ if [ $? -gt 1 ]; then
    xrandr --output eDP1 --mode 3200x1800 --scale 0.4x0.4 \
           --output DP1  --mode 3840x2160 --scale 0.5x0.5 --right-of eDP1
 else
-   xrandr --output eDP1 --mode 3200x1800 --scale 0.4x0.4
+   xrandr --output eDP1 --mode 3200x1800 --scale 0.35x0.35
 fi    
 
 #
