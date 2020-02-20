@@ -1,78 +1,36 @@
+! **************************************************************
+! ALL COLORS ARE LOADED BY ~/solarized/xresources/solarized
+! **************************************************************
+!
 !#define S_base01        #637b83
-#define S_base01        #586e75
-#define S_base03        #002b36
-#define S_base02        #073642
+! #define S_base01        #586e75
+! #define S_base03        #002b36
+! #define S_base02        #073642
 
-#define S_base00        #657b83
-#define S_base0         #839496
-#define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
+! #define S_base00        #657b83
+! #define S_base0         #839496
+! #define S_base1         #93a1a1
+! #define S_base2         #eee8d5
+! #define S_base3         #fdf6e3
 
-#define S_yellow        #b58900
-#define S_orange        #cb4b16
-#define S_red           #dc322f
-#define S_magenta       #d33682
-#define S_violet        #6c71c4
-#define S_blue          #268bd2
-#define S_cyan          #2aa198
-#define S_green         #859900
-#define S_dark_gray     #182122
+! #define S_yellow        #b58900
+! #define S_orange        #cb4b16
+! #define S_red           #dc322f
+! #define S_magenta       #d33682
+! #define S_violet        #6c71c4
+! #define S_blue          #268bd2
+! #define S_cyan          #2aa198
+! #define S_green         #859900
+! #define S_dark_gray     #182122
 
 !
 ! My Settings
 !
-#define C_15_perc_of_white #21292b
-
-!
-! Xcursor --------------------------------------------------------------------
-!
-Xcursor.theme: 				whiteglass
-Xcursor.size:  				16
-URxvt*cursorBlink:      	true
-URxvt*mouseWheelScrollPage: true
+! #define C_15_perc_of_white #21292b
 
 ! **************************************************************
-! URxvt
+! Xft settings
 ! **************************************************************
-URxvt*termName: rxvt-unicode-256color
-URxvt*.bitdepth: 32
-URxvt.letterSpace: -1
-
-!URxvt*inheritPixmap:    False
-! background color (prior to tinting) (default is white)
-!*background: black
-!URxvt*background:       rgba:0000/0000/0000/cccc
-!URxvt*foreground:       green
-!URxvt*foreground:       #00D000
-!URxvt*foreground:       gray
-
-URxvt*background:       black
-URxvt*foreground:       #00BB00
-URxvt*fadeColor:        S_base03
-
-! transparency - true or false (default)
-URxvt*transparent:      true
-
-! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
-!   some nice listings are at:
-!     http://www.nisrv.com/drupal/?q=node/11
-!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
-!URxvt*tintColor:        grey
-!URxvt*fading:           10
-!URxvt*fadeColor:        darkgrey
-
-! shading - 0 to 99 darkens, 101 to 200 lightens.
-!   Don t use with tintColor; just use a darker or lighter color instead.
-URxvt*shading:          6
-
-! scrollback buffer lines - 65535 is max on most machines (64 is default)
-URxvt*saveLines:        65535
-
-URxvt*cursorColor:      #00BB00
-
-!
-! Xft settings ---------------------------------------------------------------
 !
 ! Setting DPI manually
 ! Note: While you can set any dpi you like and applications using Qt and GTK
@@ -92,7 +50,7 @@ URxvt*cursorColor:      #00BB00
 !Xft.dpi:  96
 !#endif
 
-Xft.dpi: 120
+Xft.dpi: 96
 Xft.antialias: 1
 
 Xft.hinting:    1
@@ -101,31 +59,81 @@ Xft.autohint: 	0
 Xft.hintstyle:  hintfull
 Xft.lcdfilter:	lcddefault
 
+! **************************************************************
+! Xcursor
+! **************************************************************
+Xcursor.theme: 				whiteglass
+Xcursor.size:  				16
+
+! **************************************************************
+! URxvt
+! **************************************************************
+! URxvt*mouseWheelScrollPage: true
+URxvt*cursorBlink:      	true
+URxvt*termName:             rxvt-unicode-256color
+URxvt*.bitdepth:            32
+
+!URxvt*inheritPixmap:    False
+! background color (prior to tinting) (default is white)
+!*background: black
+!URxvt*background:       rgba:0000/0000/0000/cccc
+!URxvt*foreground:       green
+!URxvt*foreground:       #00D000
+!URxvt*foreground:       gray
+
+! URxvt*background:       black
+! URxvt*foreground:       #00BB00
+! URxvt*fadeColor:        S_base03
+
+! transparency - true or false (default)
+!URxvt*transparent:      true
+
+! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
+!   some nice listings are at:
+!     http://www.nisrv.com/drupal/?q=node/11
+!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
+!URxvt*tintColor:        grey
+!URxvt*fading:           10
+!URxvt*fadeColor:        darkgrey
+
+! shading - 0 to 99 darkens, 101 to 200 lightens.
+!   Don t use with tintColor; just use a darker or lighter color instead.
+! URxvt*shading:          6
+
+! scrollback buffer lines - 65535 is max on most machines (64 is default)
+! URxvt*saveLines:        65535
+
+! URxvt*cursorColor:      #00BB00
+
+! **************************************************************
+! Fonts
+! **************************************************************
+
+URxvt.letterSpace: 0
+
 ! Xft (X FreeType) with Bitstream, DejaVu, Liberation, or Terminus fonts:
 !  Fedora/debian packages: libXft/libxft2 
 !  An anti-aliased font setup with Xft looks fantastic; it can be a bit choppy 
 !  on older systems. You can always turn off anti-aliasing (antialias=false) if
 !  your terminal is sluggish. Use only ONE of the Xft pairs below:
 !
-! Xft: Bitstream fonts
-!  Fedora/debian packages: bitstream-vera-sans-mono-fonts/ttf-bitstream-vera 
-!URxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=12:antialias=true:hinting=true
-!URxvt*boldFont: xft:Bitstream Vera Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
-
 !
 ! Xft: DejaVu fonts
 !  Fedora/debian packages: dejavu-sans-mono-fonts/ttf-dejavu 
-!URxvt*font: xft:DejaVu Sans Mono:style=Normal:pixelsize=15:antialias=true:hinting=true
+!URxvt*font: xft:DejaVu Sans Mono:style=Normal:pixelsize=15:antialias=true:hinting=false
 !URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=15:antialias=true:hinting=true
 !URxvt*italicFont: xft:DejaVu Sans Mono:italic:pixelsize=15:antialias=true:hinting=true
 
 !
 ! Xft: fonts
 !  from internet
-URxvt*font: xft:Hack:style=normal:pixelsize=13.5:antialias=true:hinting=true,xft:DroidSansMono Nerd Font:pixelsize=9:antialias=true:hinting=true
-URxvt*boldFont: xft:Hack:style=normal:size=7.5:antialias=true:hinting=true
-URxvt*italicFont: xft:Hack:style=italic:size=7.5:antialias=true:hinting=true
+URxvt*font: xft:Source Code Pro:pixelsize=12:antialias=true:hinting=true,xft:DroidSansMono Nerd Font:pixelsize=9:antialias=true:hinting=true
+! URxvt*boldFont: xft:Hack:style=normal:size=12:antialias=true:hinting=true
+!URxvt*italicFont: xft:Hack:style=italic:size=12:antialias=true:hinting=true
 
+! URxvt*font: -xos4-*-medium-r-normal-*-14-*-72-72-c-80-iso10646-1,xft:DroidSansMono Nerd Font:pixelsize=9:antialias=true:hinting=true
+!URxvt*boldFont: xft:Hack:style=normal:size=13:antialias=true:hinting=true
+!URxvt*italicFont: xft:Hack:style=italic:size=12:antialias=true:hinting=true
 
 !
 ! Table of colors
@@ -162,23 +170,23 @@ URxvt*italicFont: xft:Hack:style=italic:size=7.5:antialias=true:hinting=true
 !       ls --color=auto; symbolic link broken background 
 ! color8:
 !       NOT IDENTIFY
-*color0:                S_base02
-*color8:                S_base03
+! *color0:                S_base02
+! *color8:                S_base03
 
 ! color1:
 !       URxvt Tab; label ('NEW' '1'...) background
 ! color9:
 !       Man; command parameters NAME, SYNOPSIS foreground
 !       ls --color=auto; symbolic link broken foreground
-*color1:                S_cyan
-*color9:                white
+! *color1:                S_cyan
+! *color9:                white
 
 ! color2:
 !       powerlevel9k prompt; git branch background
 ! color10:
 !       Man; middle of text ephasy
-*color2:                S_green
-*color10:               S_base01
+! *color2:                S_yellow
+! *color10:               S_base01
 
 ! color3:
 !       powerlevel9k prompt; only $USER@$HOST foreground
@@ -186,8 +194,8 @@ URxvt*italicFont: xft:Hack:style=italic:size=7.5:antialias=true:hinting=true
 !       less status bar; foreground
 !       man status bar; foreground
 !       ls --color=auto; zip files
-*color3:                S_yellow
-*color11:               yellow
+! *color3:                S_yellow
+! *color11:               yellow
 
 ! color4:
 !       powerlevel9k prompt;
@@ -195,35 +203,35 @@ URxvt*italicFont: xft:Hack:style=italic:size=7.5:antialias=true:hinting=true
 !          man statu background, less status background
 ! color12:
 !       ls --color=auto; dirs foreground
-*color4:                C_15_perc_of_white
-*color12:               white
+! *color4:                C_15_perc_of_white
+! *color12:               white
 
 ! color5:
 !       NOT IDENTIFYIED;
 ! color13:
 !       ls --color=auto; *.png files foreground
-*color5:                S_magenta
-*color13:               S_orange
+! *color5:                S_magenta
+! *color13:               S_orange
 
 ! color6:
 !       NOT IDENTIFYIED;
 ! color14:
 !       NOT IDENTIFYIED;
-*color6:                S_cyan
-*color14:               S_base1
+! *color6:                S_cyan
+! *color14:               S_base1
 
 ! color7;
 !       powerlevel9k prompt; time background
 ! color15:
 !       NOT IDENTIFYED
-*color7:                S_base2
-*color15:               S_base3
+! *color7:                S_base2
+! *color15:               S_base3
 
 URxvt*colorBD:          S_red
 URxvt.colorIT:          green
 
 ! scrollbar - true (default) or false
-URxvt*scrollBar: false
+! URxvt*scrollBar: false
 ! scrollbar position - left=false (default) or right=true
 !URxvt*scrollBar_right: true
 ! scrollbar style - rxvt (default), plain, next, or xterm
@@ -312,4 +320,4 @@ xterm*background:       black
 ! **************************************************************
 ! Evince
 ! **************************************************************
-Evince*font:  xft:inconsolata:style=Normal:size=10:antialias=true:hinting=true
+! Evince*font:  xft:inconsolata:style=Normal:size=10:antialias=true:hinting=true
