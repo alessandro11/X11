@@ -39,3 +39,22 @@ IsBatteryDischarging() {
 
     return 1;
 }
+
+GetStatusOfDisplay() {
+    local displays="" aux=""
+    local count=0
+
+    pushd /sys/class/drm >/dev/null
+
+    for d in $(ls -d */); do
+        if [ -f "${d}/status" ] && [ "`<${d}/status`" == "connected" ]; then
+            aux="${d#*-}"
+            displays="${aux::-1} $displays"
+            let "count++"
+        fi
+    done
+    popd >/dev/null
+
+    echo "$displays"
+    return $count
+}
