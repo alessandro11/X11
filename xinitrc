@@ -70,10 +70,16 @@ fi
 # xrandr --setmonitor mysetmonitors auto eDP1,DP1
 [ $VIDEO_OUT2_ENABLED -eq 0 ] && \
     xrandr --output DP1 --primary
-
-### Set scale since 4K monitors are too small.
-#xrandr --output eDP1 --scale 0.75x0.75 --left
-xrandr --output eDP1 --mode 3200x1800 --scale 0.75x0.75 --output DP1 --mode 3840x2160 --right-of eDP1
+#
+# Set scale since 4K monitors are too small.
+#
+GetStatusOfDisplay >/dev/null
+if [ $? -gt 1 ]; then
+   xrandr --output eDP1 --mode 3200x1800 --scale 0.4x0.4 \
+          --output DP1  --mode 3840x2160 --scale 0.5x0.5 --right-of eDP1
+else
+   xrandr --output eDP1 --mode 3200x1800 --scale 0.4x0.4
+fi    
 
 #
 # Set wallpaper; set after redimentioning the display.
