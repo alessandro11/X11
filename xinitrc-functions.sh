@@ -40,21 +40,46 @@ IsBatteryDischarging() {
     return 1;
 }
 
+IsDockConnected() {
+    declare -r -A docks=(['DELL_DA300']='06c4:c412')
+
+    for dock in ${!docks[@]}; do
+        if lsusb -d ${docks[$dock]} >&/dev/null; then
+            echo "$dock"
+            return 0
+        fi
+    done
+
+    return 1
+}
+
 GetStatusOfDisplay() {
     local displays="" aux=""
     local count=0
 
     pushd /sys/class/drm >/dev/null
-
     for d in $(ls -d */); do
         if [ -f "${d}/status" ] && [ "`<${d}/status`" == "connected" ]; then
             aux="${d#*-}"
-            displays="${aux::-1} $displays"
+            displays="${aux::-1},$displays"
             let "count++"
         fi
     done
     popd >/dev/null
 
-    echo "$displays"
+    echo "`tr -d '-' <<< $displays`"
     return $count
+}
+
+IsExternKeyboardConnected() {
+    declare -r -A keyboards=(['warrior']='0c45:760a' ['ibm']='13ba:0017')
+
+    for keyboard in ${!keyboards[@]}; do
+        if lsusb -d ${keyboards[$keyboard]} &>/dev/null; then
+            echo "$keyboard"
+            return 0
+        fi
+    done
+
+    return 1
 }
