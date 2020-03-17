@@ -4,18 +4,17 @@
 # Executed by startx (run your window manager from here)
 #
 
+LOG_FILE=""
+
 enable_debug() {
-    :> /tmp/log
-    exec 4>> /tmp/log
-    exec 5>> /tmp/log
+    LOG_FILE=$(mktemp --suffix="-i3-${USER}-$(date +%FT%T).log")
+    exec 4>> "$LOG_FILE"
+    exec 5>> "$LOG_FILE"
     exec 1>&4
     exec 2>&5
     set -x
 }
 enable_debug
-
-VIDEO_OUT2="DP1"
-VIDEO_OUT2_ENABLED=-1
 
 source ~/.xinitrc-functions.sh
 
@@ -37,50 +36,45 @@ xset -b
 #setxkbmap -option terminate:ctrl_alt_bksp & # Set short-cutkey for end session
 
 # Set monitor backlight.
-xbacklight -set 50%
+xbacklight -set 60%
 
 # load bindkey from ~/.xbindkeys
 xbindkeys
 
+#
+# IBM PS2 keyboard has dead key (|\/?) with adapter
+# map right windows key (134) for pipe (|)
 xmodmap -e "keycode 134 = bar"
 
-### Check if the keyboard warrior (mechanical)
-# is connected.
-if ! lsusb -d "0c45:760a" >/dev/null 2>&1; then
+#
+# Check if there is an extern keyboard
+#
+if ! IsExternKeyboardConnected; then
    #ACTION='add' DELAY=y /usr/local/bin/setkb.sh
-   syndaemon -i 0.3 -K -R -d
+   syndaemon -i 0.5 -K -R -d
    # syndaemon does not work if psmouse module is up
    sudo modprobe -r psmouse
 fi
 
-CONF="$HOME/.config/i3/config-eDP1"
-if IsDP_1Connected; then
-    CONF="$CONF-DP1"
-    VIDEO_OUT2_ENABLED=0
-else
-    VIDEO_OUT2_ENABLED=1
-fi
-
-if IsBatteryPlugged -a IsBatteryDischarging; then
-    CONF="$CONF-BAT"
-fi
-
-###
-# Create set of monitors, it presents as an
-# single monitor.
-# xrandr --setmonitor mysetmonitors auto eDP1,DP1
-[ $VIDEO_OUT2_ENABLED -eq 0 ] && \
-    xrandr --output DP1 --primary
+xrandr --listmonitors
+sleep 3
 #
 # Set scale since 4K monitors are too small.
 #
-GetStatusOfDisplay >/dev/null
+outputs=$(GetStatusOfDisplay)
 if [ $? -gt 1 ]; then
-   xrandr --output eDP1 --mode 3200x1800 --scale 0.4x0.4 \
-          --output DP1  --mode 3840x2160 --scale 0.5x0.5 --right-of eDP1
+   xrandr --output eDP1 --mode 3200x1800 --scale 0.4x0.4 --left-of DP1 \
+          --output DP1 --primary --mode 1920x1080
 else
-   xrandr --output eDP1 --mode 3200x1800 --scale 0.35x0.35
-fi    
+   xrandr --output eDP1 --primary --mode 3200x1800 --scale 0.35x0.35
+fi
+
+#
+# Parse config it will generate /tmp/i3.conf
+#
+pushd "$HOME/.config/i3"
+$HOME/.config/i3/parse-config.sh -o $outputs
+popd
 
 #
 # Set wallpaper; set after redimentioning the display.
@@ -101,6 +95,4 @@ disable_debug() {
 disable_debug
 
 # starts the window manager
-exec /usr/bin/i3 -c "$CONF"
-
-disable_debug
+exec /usr/bin/i3 -c "/tmp/i3.conf"
