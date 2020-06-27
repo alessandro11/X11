@@ -18,25 +18,15 @@ enable_debug
 
 source ~/.xinitrc-functions.sh
 
-# Laod x resources
+# Load X resources
 xrdb -load ~/.Xresources
 xrdb -merge ~/solarized/xresources/solarized
 
 # Manage transparency
 xcompmgr &
 
-# Sets the default cursor.
-#xsetroot -cursor_name left_ptr
-
 # Switch off speaker.
 xset -b
-
-### DEPRECATED
-# Now is at /etc/X11/xorg.conf.d/00-keyboard.conf.
-#setxkbmap -option terminate:ctrl_alt_bksp & # Set short-cutkey for end session
-
-# Set monitor backlight.
-xbacklight -set 60%
 
 # load bindkey from ~/.xbindkeys
 xbindkeys
@@ -44,29 +34,29 @@ xbindkeys
 #
 # IBM PS2 keyboard has dead key (|\/?) with adapter
 # map right windows key (134) for pipe (|)
-xmodmap -e "keycode 134 = bar"
+#xmodmap -e "keycode 134 = bar"
 
 #
 # Check if there is an extern keyboard
+# see xinitrc-functions.sh for array of keyboard models
 #
-if ! IsExternKeyboardConnected; then
-   #ACTION='add' DELAY=y /usr/local/bin/setkb.sh
-   syndaemon -i 0.5 -K -R -d
+if IsExternKeyboardConnected; then
+   numlockx &
+else
+   ACTION='add' DELAY=y /usr/local/bin/setkb.sh us
+   syndaemon -i 0.5 -d & disown
    # syndaemon does not work if psmouse module is up
    sudo modprobe -r psmouse
 fi
 
-xrandr --listmonitors
-sleep 3
 #
 # Set scale since 4K monitors are too small.
 #
 outputs=$(GetStatusOfDisplay)
 if [ $? -gt 1 ]; then
-   xrandr --output eDP1 --mode 3200x1800 --scale 0.4x0.4 --left-of DP1 \
-          --output DP1 --primary --mode 1920x1080
+    xrandr --output eDP-1 --mode 3200x1800 --rate 60 --scale 0.4x0.4 --left-of DP-1 --output DP-1 --primary --mode 1920x1080 --rate 60
 else
-   xrandr --output eDP1 --primary --mode 3200x1800 --scale 0.35x0.35
+   xrandr --output eDP-1 --primary --mode 3200x1800 --scale 0.4x0.4
 fi
 
 #
@@ -84,6 +74,20 @@ feh --bg-fill ~/.wallpaper/archlinux-leder-arCh-asKaliLogo.jpg
 ###
 # Load DISPLAY and XAUTHORITY in systemd env
 /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+
+###
+# WARNING:
+#   BUG xbacklight returns 'No outputs have backlight property'.
+#
+# Set monitor backlight.
+# xbacklight -set 60%
+
+###
+# Set backlight to 80%
+#
+# WARNING:
+#   DO NOT USE xbacklight, BUG (see above).
+xrandr --output eDP-1 --brightness 0.8
 
 disable_debug() {
     set +x
