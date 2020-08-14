@@ -67,12 +67,13 @@ GetStatusOfDisplay() {
     done
     popd >/dev/null
 
-    echo "`tr -d '-' <<< $displays`"
+    #echo "`tr -d '-' <<< $displays`"
+    echo "$displays"
     return $count
 }
 
 IsExternKeyboardConnected() {
-    declare -r -A keyboards=(['warrior']='0c45:760a' ['ibm']='13ba:0017')
+    declare -r -A keyboards=(['shuriken']='258a:002a' ['ibm']='13ba:0017')
 
     for keyboard in ${!keyboards[@]}; do
         if lsusb -d ${keyboards[$keyboard]} &>/dev/null; then
