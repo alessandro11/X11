@@ -42,6 +42,7 @@ xbindkeys
 #
 if IsExternKeyboardConnected; then
    numlockx &
+   ACTION='add' DELAY=y /usr/local/bin/setkb.sh br
 else
    ACTION='add' DELAY=y /usr/local/bin/setkb.sh us
    syndaemon -i 0.5 -d & disown
@@ -87,7 +88,7 @@ feh --bg-fill ~/.wallpaper/archlinux-leder-arCh-asKaliLogo.jpg
 #
 # WARNING:
 #   DO NOT USE xbacklight, BUG (see above).
-xrandr --output eDP-1 --brightness 0.8
+xrandr --output eDP-1 --brightness 0.9
 
 disable_debug() {
     set +x
@@ -99,4 +100,5 @@ disable_debug() {
 disable_debug
 
 # starts the window manager
-exec /usr/bin/i3 -c "/tmp/i3.conf"
+exec dbus-launch --sh-syntax --exit-with-session /usr/bin/i3 -c "/tmp/i3.conf"
+
