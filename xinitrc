@@ -20,7 +20,7 @@ source ~/.xinitrc-functions.sh
 
 # Load X resources
 xrdb -load ~/.Xresources
-xrdb -merge ~/solarized/xresources/solarized
+xrdb -merge ~/.xresources-themes/green
 
 # Manage transparency
 xcompmgr &
@@ -55,9 +55,9 @@ fi
 #
 outputs=$(GetStatusOfDisplay)
 if [ $? -gt 1 ]; then
-    xrandr --output eDP-1 --mode 3200x1800 --rate 60 --scale 0.4x0.4 --left-of DP-1 --output DP-1 --primary --mode 1920x1080 --rate 60
+    xrandr --output eDP-1 --mode 3200x1800 --rate 60 --scale 0.75x0.75 --left-of DP-1 --output DP-1 --primary --mode 3840x2160 --rate 60 --scale 0.85x0.85
 else
-   xrandr --output eDP-1 --primary --mode 3200x1800 --scale 0.4x0.4
+   xrandr --output eDP-1 --primary --mode 3200x1800 --rate 60 --scale 0.7x0.7
 fi
 
 #
