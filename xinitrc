@@ -16,11 +16,24 @@ enable_debug() {
 }
 enable_debug
 
-source ~/.xinitrc-functions.sh
+#
+# Load helpers functions
+source ~/.xinitrc-helpers.sh
 
-# Load X resources
+#
+# Load X resources and theme
+#
 xrdb -load ~/.Xresources
-xrdb -merge ~/.xresources-themes/green
+xrdb -merge ~/.xresources-themes/solarized/xresources/solarized 
+
+#
+# swap commma for period on numeric pad
+#
+setxkbmap br -option kpdl:dot
+
+#xsetroot -xcf /usr/share/icons/mac-aqua-cursor/cursors/left_ptr 32
+
+#xautolock -time 12 -locker "systemctl suspend" -detectsleep &>/dev/null
 
 # Manage transparency
 xcompmgr &
@@ -44,20 +57,29 @@ if IsExternKeyboardConnected; then
    numlockx &
    ACTION='add' DELAY=y /usr/local/bin/setkb.sh br
 else
-   ACTION='add' DELAY=y /usr/local/bin/setkb.sh us
+   ACTION='add' DELAY=y /usr/local/bin/setkb.sh br
    syndaemon -i 0.5 -d & disown
    # syndaemon does not work if psmouse module is up
    sudo modprobe -r psmouse
 fi
 
 #
+# WARNING:
+#         WORKAROUND
+# When this line is removed xrandr does not find the
+# resolution 3840x2160. Why? i have no idea
+#
+xrandr &>/dev/null
+
+#
 # Set scale since 4K monitors are too small.
 #
 outputs=$(GetStatusOfDisplay)
 if [ $? -gt 1 ]; then
-    xrandr --output eDP-1 --mode 3200x1800 --rate 60 --scale 0.75x0.75 --left-of DP-1 --output DP-1 --primary --mode 3840x2160 --rate 60 --scale 0.85x0.85
+   ${HOME}/.screenlayout/layout.sh
+   #xrandr --output HDMI1 --mode 1920x1080 --scale 1.3x1.3 --right-of eDP1 --output eDP1 --mode 1920x1080
 else
-   xrandr --output eDP-1 --primary --mode 3200x1800 --rate 60 --scale 0.7x0.7
+   xrandr --output eDP1 --primary --mode 1920x1080 --rate 60 --scale 1.1x1.1
 fi
 
 #
@@ -88,7 +110,7 @@ feh --bg-fill ~/.wallpaper/archlinux-leder-arCh-asKaliLogo.jpg
 #
 # WARNING:
 #   DO NOT USE xbacklight, BUG (see above).
-xrandr --output eDP-1 --brightness 0.9
+#xrandr --output eDP-1 --brightness 0.9
 
 disable_debug() {
     set +x
@@ -100,5 +122,6 @@ disable_debug() {
 disable_debug
 
 # starts the window manager
-exec dbus-launch --sh-syntax --exit-with-session /usr/bin/i3 -c "/tmp/i3.conf"
+#exec dbus-launch --sh-syntax --exit-with-session /usr/bin/i3 -c "/tmp/i3.conf"
+exec /usr/bin/i3 -c "/tmp/i3.conf"
 
