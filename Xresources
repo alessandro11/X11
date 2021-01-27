@@ -62,8 +62,9 @@ Xft.lcdfilter:	lcdlight
 ! **************************************************************
 ! Xcursor
 ! **************************************************************
-Xcursor.theme: 				whiteglass
-Xcursor.size:  				24
+! LXApperance has set the them
+Xcursor.theme: 				mac-raioactive-cursor
+Xcursor.size:  				32
 
 ! **************************************************************
 ! URxvt
@@ -86,7 +87,7 @@ URxvt*.bitdepth:            32
 ! URxvt*fadeColor:        S_base03
 
 ! transparency - true or false (default)
-URxvt*transparent:      true
+URxvt*transparent:      false
 
 ! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
 !   some nice listings are at:
@@ -108,7 +109,7 @@ URxvt*cursorColor:      #00ff00
 ! **************************************************************
 ! Fonts
 ! **************************************************************
-!URxvt.letterSpace: 1.9
+URxvt.letterSpace: 1
 
 ! Xft (X FreeType) with Bitstream, DejaVu, Liberation, or Terminus fonts:
 !  Fedora/debian packages: libXft/libxft2 
@@ -127,7 +128,8 @@ URxvt*cursorColor:      #00ff00
 ! Xft: fonts
 !  from internet
 !URxvt*font: xft:Source Code Pro:pixelsize=13:antialias=true:hinting=true,xft:DroidSansMono Nerd Font:pixelsize=8:antialias=true:hinting=true
-URxvt*font: xft:Anonymous Pro:style=Regular:weight=100:pixelsize=22:antialias=True:hinting=True,xft:DejaVuSansMono NF:pixelsize=22:weight=100:antialias=True:hinting=True
+URxvt*font: xft:Anonymous Pro:style=Regular:weight=75:pixelsize=18:antialias=True:hinting=True,xft:DejaVuSansMono NF:style=Book:pixelsize=18:weight=75:antialias=True:hinting=True
+!URxvt*font: xft:Anonymous Pro:style=Regular:weight=100:pixelsize=22:antialias=True:hinting=True,xft:fontawesome-regular DejaVuSansMono NF:pixelsize=22:weight=100:antialias=True:hinting=True
 !URxvt*font: xft:DejaVu Sans Mono:pixelsize=11:antialias=true:hinting=true,xft:DroidSansMono Nerd Font:pixelsize=10:antialias=false:hinting=false
 !URxvt*font: xft:Fira Code:pixelsize=11:antialias=true:hinting=true,xft:DroidSansMono Nerd Font:pixelsize=9:antialias=false:hinting=false
 !URxvt*font: xft:Misc Fixed:pixelsize=14:antialias=true:hinting=true,xft:DroidSansMono Nerd Font:pixelsize=9:antialias=true:hinting=true
@@ -235,7 +237,7 @@ URxvt*colorBD:          S_red
 URxvt.colorIT:          green
 
 ! scrollbar - true (default) or false
-! URxvt*scrollBar: false
+URxvt*scrollBar: false
 ! scrollbar position - left=false (default) or right=true
 !URxvt*scrollBar_right: true
 ! scrollbar style - rxvt (default), plain, next, or xterm
@@ -248,27 +250,34 @@ URxvt*imLocale: en_US.utf8
 ! Unset the visual bell false (default).
 URxvt*visualBell: false
 
-!URxvt.iso14755: False 
+!
+! Disable key bind C+S since than we can
+! use for paste.
+!
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
 !
 !-*- Perl extensions -*-
 !
 ! Make an link clickable
-URxvt.perl-lib:			/usr/lib/urxvt/perl
-URxvt*url-launcher:     /usr/bin/firefox
+URxvt.perl-lib:	        /usr/lib/urxvt/perl
+URxvt*url-launcher:     /usr/bin/chromium
 URxvt*underlineURLs:    True
 URxvt*matcher.button:   1 
 URxvt*colorUL:          #19cae3
 URxvt*keysym.M-u:       perl:url-select:select_next
 URxvt.keysym.M-s:       perl:keyboard-select:search
 URxvt*keysym.M-Escape:  perl:keyboard-select:activate
-URxvt*keysym.M-c:       perl:clipboard:copy
-URxvt*keysym.M-v:       perl:clipboard:paste
-URxvt*keysym.M-C-v:     perl:clipboard:paste_escaped
-URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
-URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
-URxvt.clipboard.copycmd:        xsel -ib
-URxvt.clipboard.pastecmd:       xsel -ob
-URxvt.perl-ext-common:        default,matcher,clipboard,keyboard-select,tabbed
+URxvt*keysym.Control-Shift-C: 	perl:clipboard:copy
+URxvt*keysym.Control-Shift-V:   perl:clipboard:paste
+URxvt*keysym.Control-Shift-M-V: perl:clipboard:paste_escaped
+URxvt.perl-ext-common:    default,matcher,clipboard,keyboard-select,tabbed,resize-font
+
+!URxvt*keysym.Control-v:  bash:xsel -b | xclip
+
+!URxvt.clipboard.copycmd:        xsel b
+!URxvt.clipboard.pastecmd:       xsel b
 
 !
 ! Bind keys
@@ -287,6 +296,14 @@ URxvt*keysym.End: \033[4~
 !URxvt.keysym.C-S-Down: perl:font-size:decglobal
 URxvt.keysym.M-C-1: command:\033]710;Inconsolata\007\033]711;Inconsolata\007
 URxvt.keysym.M-C-2: command:\033]710;9x15bold\007\033]711;9x15bold\007
+URxvt.keysym.C-minus:     resize-font:smaller
+URxvt.keysym.C-plus:      resize-font:bigger
+URxvt.keysym.C-equal:     resize-font:reset
+URxvt.keysym.C-question:  resize-font:show
+URxvt.resize-font.step: 2
+
+! Disable printing the terminal contents when pressing PrintScreen.
+URxvt.print-pipe: "/bin/true"
 
 ! **************************************************************
 ! XLOCK
@@ -298,7 +315,7 @@ xlock.mode:             blank
 ! XTERM
 ! **************************************************************
 !xterm*VT100.geometry:   80x25
-xterm*faceName:         DejaVu Sans Mono:size=8
+xterm*faceName:         DejaVu Sans Mono:size=14
 xterm*dynamicColors:    true
 xterm*utf8:             2
 xterm*eightBitInput:    true
@@ -325,3 +342,5 @@ xterm*background:       black
 ! Evince
 ! **************************************************************
 ! Evince*font:  xft:inconsolata:style=Normal:size=10:antialias=true:hinting=true
+!
+Chromium*background:   black
