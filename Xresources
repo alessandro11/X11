@@ -1,29 +1,9 @@
 ! **************************************************************
-! ALL COLORS ARE LOADED BY ~/solarized/xresources/solarized
+! ALL COLORS ARE LOADED BY ~/.xresources-themes/<theme>
 ! **************************************************************
-!
-!#define S_base01        #637b83
-! #define S_base01        #586e75
-! #define S_base03        #002b36
-! #define S_base02        #073642
 
-! #define S_base00        #657b83
-! #define S_base0         #839496
-! #define S_base1         #93a1a1
-! #define S_base2         #eee8d5
-! #define S_base3         #fdf6e3
+!#include ".Xresources.d/green"
 
-! #define S_yellow        #b58900
-! #define S_orange        #cb4b16
-#define S_red           #dc322f
-! #define S_magenta       #d33682
-! #define S_violet        #6c71c4
-! #define S_blue          #268bd2
-! #define S_cyan          #2aa198
-! #define S_green         #859900
-! #define S_dark_gray     #182122
-
-!
 ! My Settings
 !
 ! #define C_15_perc_of_white #21292b
@@ -62,53 +42,32 @@ Xft.lcdfilter:	lcdlight
 ! **************************************************************
 ! Xcursor
 ! **************************************************************
-Xcursor.theme: 				whiteglass
+Xcursor.theme: 				mac-radioactive-cursor
 Xcursor.size:  				24
 
 ! **************************************************************
 ! URxvt
 ! **************************************************************
 ! URxvt*mouseWheelScrollPage: true
-URxvt*cursorBlink:      	true
-URxvt*termName:             rxvt-unicode-256color
-URxvt*.bitdepth:            32
-
-!URxvt*inheritPixmap:    False
-! background color (prior to tinting) (default is white)
-!*background: black
-!URxvt*background:       rgba:0000/0000/0000/cccc
-!URxvt*foreground:       green
-!URxvt*foreground:       #00D000
-!URxvt*foreground:       gray
-
-! URxvt*background:       black
-! URxvt*foreground:       #00BB00
-! URxvt*fadeColor:        S_base03
+URxvt.cursorBlink:      true
+URxvt.termName:         rxvt-unicode-256color
+URxvt.bitdepth:         32
 
 ! transparency - true or false (default)
-URxvt*transparent:      true
-
-! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
-!   some nice listings are at:
-!     http://www.nisrv.com/drupal/?q=node/11
-!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
-!URxvt*tintColor:        grey
-!URxvt*fading:           10
-!URxvt*fadeColor:        darkgrey
+!URxvt.transparent:      true
 
 ! shading - 0 to 99 darkens, 101 to 200 lightens.
 !   Don t use with tintColor; just use a darker or lighter color instead.
-URxvt*shading:          5
+!URxvt.shading:          5
 
 ! scrollback buffer lines - 65535 is max on most machines (64 is default)
-URxvt*saveLines:        65535
+URxvt.saveLines:        65535
 
-URxvt*cursorColor:      #00ff00
 
 ! **************************************************************
 ! Fonts
 ! **************************************************************
-!URxvt.letterSpace: 1.9
+URxvt.letterSpace: 0
 
 ! Xft (X FreeType) with Bitstream, DejaVu, Liberation, or Terminus fonts:
 !  Fedora/debian packages: libXft/libxft2 
@@ -127,7 +86,8 @@ URxvt*cursorColor:      #00ff00
 ! Xft: fonts
 !  from internet
 !URxvt*font: xft:Source Code Pro:pixelsize=13:antialias=true:hinting=true,xft:DroidSansMono Nerd Font:pixelsize=8:antialias=true:hinting=true
-URxvt*font: xft:Anonymous Pro:style=Regular:weight=100:pixelsize=22:antialias=True:hinting=True,xft:DejaVuSansMono NF:pixelsize=22:weight=100:antialias=True:hinting=True
+URxvt*font: xft:Anonymous Pro:style=Regular:weight=75:pixelsize=22:antialias=True:hinting=True,xft:DejaVuSansMono NF:style=Book:pixelsize=22:weight=75:antialias=True:hinting=True
+!URxvt*font: xft:Anonymous Pro:style=Regular:weight=100:pixelsize=22:antialias=True:hinting=True,xft:fontawesome-regular DejaVuSansMono NF:pixelsize=22:weight=100:antialias=True:hinting=True
 !URxvt*font: xft:DejaVu Sans Mono:pixelsize=11:antialias=true:hinting=true,xft:DroidSansMono Nerd Font:pixelsize=10:antialias=false:hinting=false
 !URxvt*font: xft:Fira Code:pixelsize=11:antialias=true:hinting=true,xft:DroidSansMono Nerd Font:pixelsize=9:antialias=false:hinting=false
 !URxvt*font: xft:Misc Fixed:pixelsize=14:antialias=true:hinting=true,xft:DroidSansMono Nerd Font:pixelsize=9:antialias=true:hinting=true
@@ -231,11 +191,9 @@ URxvt*font: xft:Anonymous Pro:style=Regular:weight=100:pixelsize=22:antialias=Tr
 ! *color7:                S_base2
 ! *color15:               S_base3
 
-URxvt*colorBD:          S_red
-URxvt.colorIT:          green
 
 ! scrollbar - true (default) or false
-! URxvt*scrollBar: false
+URxvt*scrollBar: false
 ! scrollbar position - left=false (default) or right=true
 !URxvt*scrollBar_right: true
 ! scrollbar style - rxvt (default), plain, next, or xterm
@@ -248,35 +206,44 @@ URxvt*imLocale: en_US.utf8
 ! Unset the visual bell false (default).
 URxvt*visualBell: false
 
-!URxvt.iso14755: False 
+!
+! Disable key bind C+S since than we can
+! use for paste.
+!
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
 !
 !-*- Perl extensions -*-
 !
 ! Make an link clickable
-URxvt.perl-lib:			/usr/lib/urxvt/perl
-URxvt*url-launcher:     /usr/bin/firefox
-URxvt*underlineURLs:    True
-URxvt*matcher.button:   1 
-URxvt*colorUL:          #19cae3
-URxvt*keysym.M-u:       perl:url-select:select_next
-URxvt.keysym.M-s:       perl:keyboard-select:search
-URxvt*keysym.M-Escape:  perl:keyboard-select:activate
-URxvt*keysym.M-c:       perl:clipboard:copy
-URxvt*keysym.M-v:       perl:clipboard:paste
-URxvt*keysym.M-C-v:     perl:clipboard:paste_escaped
+URxvt.perl-lib:			    /usr/lib/urxvt/perl
+URxvt.url-launcher:         /usr/bin/chromium
+URxvt.underlineURLs:        True
+URxvt.matcher.button:       1
+URxvt.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
+URxvt.matcher.launcher.2:   vim +$2 $1
+URxvt.colorUL:              #0066ff
+
+URxvt.keysym.M-u:               perl:url-select:select_next
+URxvt.keysym.M-s:               perl:keyboard-select:search
+URxvt.keysym.M-Escape:          perl:keyboard-select:activate
+URxvt.keysym.M-c:               perl:clipboard:copy
+URxvt.keysym.M-v:               perl:clipboard:paste
+URxvt.keysym.M-C-v:             perl:clipboard:paste_escaped
 URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
 URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
 URxvt.clipboard.copycmd:        xsel -ib
 URxvt.clipboard.pastecmd:       xsel -ob
-URxvt.perl-ext-common:        default,matcher,clipboard,keyboard-select,tabbed
+URxvt.perl-ext-common:          default,matcher,clipboard,keyboard-select,tabbed,resize-font
 
 !
 ! Bind keys
 !
 URxvt.keysym.Control-Left: \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
-URxvt*keysym.Home: \033[1~
-URxvt*keysym.End: \033[4~
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
 ! URxvt.keysym.Home: \033OH
 ! URxvt.keysym.End:  \033OF
 ! URxvt.keysym.KP_Home: \033OH
@@ -287,6 +254,12 @@ URxvt*keysym.End: \033[4~
 !URxvt.keysym.C-S-Down: perl:font-size:decglobal
 URxvt.keysym.M-C-1: command:\033]710;Inconsolata\007\033]711;Inconsolata\007
 URxvt.keysym.M-C-2: command:\033]710;9x15bold\007\033]711;9x15bold\007
+URxvt.keysym.C-minus:     resize-font:smaller
+URxvt.keysym.C-plus:      resize-font:bigger
+URxvt.keysym.C-equal:     resize-font:reset
+URxvt.keysym.C-question:  resize-font:show
+URxvt.resize-font.step:   2
+
 
 ! **************************************************************
 ! XLOCK

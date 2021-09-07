@@ -1,0 +1,151 @@
+!
+! #########################################################
+! WARNIG:
+!         do not set comments at end of line on #define
+! such as:
+! #define S_green         #53ff1a   ! 55% green (live)
+! DOES NOT WORK
+
+! Common
+
+! S_yellow      #b58900
+! S_yellow_25   #808000 yellow 25%
+! S_orange      #cb4b16
+! S_red         #dc322f
+! S_magenta     #d33682
+! S_violet      #6c71c4
+! S_blue        #268bd2
+! S_cyan        #2aa198
+! S_green       #00ff00
+! S_dark_green  #00e600
+! S_dark_10     #004d00 green 10%
+! S_green_slack #4ee077
+! S_gray_50     #808080 gray 50%
+! S_gray_80     #cccccc gray 80%
+! S_purple_65   #9695b5 purple, lilac 65%
+#define S_yellow        #b58900
+#define S_yellow_25     #808000
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #00ff00
+#define S_dark_green    #00e600
+#define S_green_10      #004d00
+#define S_green_slack   #4ee077
+#define S_gray_50       #808080
+#define S_gray_80       #cccccc
+#define S_purple_65     #9695b5
+
+! Dark
+! S_base03 #002b36 dark cyan
+! S_base02 #073642 darker cyan 
+! S_base01 #586e75 darker cyan to gray
+! S_base00 #657b83 cyan to gray
+! S_base0  #839496 light cyan to gray
+! S_base1  #93a1a1
+! S_base2  #eee8d5
+! S_base3  #fdf6e3
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+! S_bg      #1a1d21 light black
+! S_fg      #4ee077 green slack style
+! S_fg_bold #53ff1a green live
+#define S_bg            #1a1d21
+#define S_bg_selected   #1c913d
+#define S_fg            S_dark_green
+#define S_fg_bold       #53ff1a
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+!
+! URxvt*background:            S_base03
+
+URxvt*background: S_bg
+!URxvt*background: rgba:0041/00af/0062/aaaa
+URxvt*foreground: S_fg
+
+URxvt.cursorColor: S_dark_green
+! URxvt.pointerColorBackground:  S_base01
+! URxvt.pointerColorForeground:  S_base1
+
+! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
+!   some nice listings are at:
+!     http://www.nisrv.com/drupal/?q=node/11
+!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
+!URxvt*tintColor:               grey
+!URxvt.fading:                  10
+!URxvt.fadeColor:               darkgrey
+
+! #####################################
+! Elements
+!   bkg TAB
+! color0: bg TAB whole bar
+URxvt.color0:  S_base02
+URxvt.color8:  S_base03
+
+! #####################################
+! Elements
+!   color1: Tab bg only [NEW] |1| ...
+!   color9: man synopsis main title
+URxvt.color1:  S_red
+URxvt.color9:  S_green
+
+! #####################################
+! Elements
+!   color2: prompt ✔ status of last cmd
+!   color10: symbolic links, executable files, man synopsis; subtopics emphasis words
+URxvt.color2:  S_dark_green
+URxvt.color10: S_green
+
+! #####################################
+! Elements
+!   color3: 
+!   color11: status less, man fg; vim line number
+URxvt.color3:  S_yellow
+URxvt.color11: cyan
+
+! #####################################
+! Elements
+!   color4:  status less, man bg; prompt p10k current path bg
+!   color12: dirs from ls -l;  
+URxvt.color4:  RoyalBlue
+URxvt.color12: S_gray_80
+
+! #####################################
+! Elements
+!   color5: 
+!   color13: files *.mkv, *.png, *.jpg
+URxvt.color5:  S_green
+URxvt.color13: S_yellow_25
+
+! #####################################
+! Elements
+!   color6: 
+!   color14:
+URxvt.color6:  S_cyan
+URxvt.color14: S_base1
+
+! #####################################
+! Elements
+!   color7: 
+!   color15:
+URxvt.color7:  S_base2
+URxvt.color15: S_base3
+
+URxvt.colorBD: white
+URxvt.colorIT: S_green
+URxvt.colorUL: S_purple_65
+
+! URxvt.highlightColor:     RoyalBlue
+! URxvt.highlightTextColor: white
+! URxvt.throughColor:       #8080f0
