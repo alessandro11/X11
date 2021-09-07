@@ -19,8 +19,8 @@ enable_debug
 source ~/.xinitrc-functions.sh
 
 # Load X resources
-xrdb -load ~/.Xresources
-xrdb -merge ~/.xresources-themes/green
+xrdb -I$HOME/.Xresources.d/ -load ~/.Xresources
+xrdb -merge ~/.Xresources.d/green
 
 # Manage transparency
 xcompmgr &
@@ -45,9 +45,9 @@ if IsExternKeyboardConnected; then
    ACTION='add' DELAY=y /usr/local/bin/setkb.sh br
 else
    ACTION='add' DELAY=y /usr/local/bin/setkb.sh us
-   syndaemon -i 0.5 -d & disown
    # syndaemon does not work if psmouse module is up
    sudo modprobe -r psmouse
+   syndaemon -i 1 m 500 -d -K & disown
 fi
 
 #
@@ -55,9 +55,9 @@ fi
 #
 outputs=$(GetStatusOfDisplay)
 if [ $? -gt 1 ]; then
-    xrandr --output eDP-1 --mode 3200x1800 --rate 60 --scale 0.75x0.75 --left-of DP-1 --output DP-1 --primary --mode 3840x2160 --rate 60 --scale 0.85x0.85
+    xrandr --output eDP-1 --mode 3200x1800 --rate 60 --scale 0.7x0.7 --left-of DP-1 --output DP-1 --primary --mode 3840x2160 --rate 60 --scale 0.85x0.85
 else
-   xrandr --output eDP-1 --primary --mode 3200x1800 --rate 60 --scale 0.7x0.7
+   xrandr --output eDP-1 --primary --mode 3200x1800 --rate 60 --scale 0.6x0.6
 fi
 
 #
@@ -100,5 +100,6 @@ disable_debug() {
 disable_debug
 
 # starts the window manager
-exec dbus-launch --sh-syntax --exit-with-session /usr/bin/i3 -c "/tmp/i3.conf"
+#exec dbus-launch --sh-syntax --exit-with-session /usr/bin/i3 -c "/tmp/i3.conf"
+exec /usr/bin/i3 -c "/tmp/i3.conf"
 
