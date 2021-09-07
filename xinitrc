@@ -16,11 +16,20 @@ enable_debug() {
 }
 enable_debug
 
-source ~/.xinitrc-functions.sh
+#
+# Load helpers functions
+source ~/.xinitrc-helpers.sh
 
 # Load X resources
 xrdb -I$HOME/.Xresources.d/ -load ~/.Xresources
 xrdb -merge ~/.Xresources.d/green
+
+#
+# swap commma for period on numeric pad
+#
+setxkbmap br -option kpdl:dot
+
+#xautolock -time 12 -locker "systemctl suspend" -detectsleep &>/dev/null
 
 # Manage transparency
 xcompmgr &
@@ -47,8 +56,16 @@ else
    ACTION='add' DELAY=y /usr/local/bin/setkb.sh us
    # syndaemon does not work if psmouse module is up
    sudo modprobe -r psmouse
-   syndaemon -i 1 m 500 -d -K & disown
+   syndaemon -i 1 -m 500 -d -K & disown
 fi
+
+#
+# WARNING:
+#         WORKAROUND
+# When this line is removed xrandr does not find the
+# resolution 3840x2160. Why? i have no idea
+#
+xrandr &>/dev/null
 
 #
 # Set scale since 4K monitors are too small.
@@ -57,7 +74,7 @@ outputs=$(GetStatusOfDisplay)
 if [ $? -gt 1 ]; then
     xrandr --output eDP-1 --mode 3200x1800 --rate 60 --scale 0.7x0.7 --left-of DP-1 --output DP-1 --primary --mode 3840x2160 --rate 60 --scale 0.85x0.85
 else
-   xrandr --output eDP-1 --primary --mode 3200x1800 --rate 60 --scale 0.6x0.6
+   ${HOME}/.screenlayout/layout.sh
 fi
 
 #
@@ -88,7 +105,7 @@ feh --bg-fill ~/.wallpaper/archlinux-leder-arCh-asKaliLogo.jpg
 #
 # WARNING:
 #   DO NOT USE xbacklight, BUG (see above).
-xrandr --output eDP-1 --brightness 0.9
+#xrandr --output eDP-1 --brightness 0.9
 
 disable_debug() {
     set +x

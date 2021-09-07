@@ -260,6 +260,8 @@ URxvt.keysym.C-equal:     resize-font:reset
 URxvt.keysym.C-question:  resize-font:show
 URxvt.resize-font.step:   2
 
+! Disable printing the terminal contents when pressing PrintScreen.
+URxvt.print-pipe: "/bin/true"
 
 ! **************************************************************
 ! XLOCK
@@ -271,7 +273,7 @@ xlock.mode:             blank
 ! XTERM
 ! **************************************************************
 !xterm*VT100.geometry:   80x25
-xterm*faceName:         DejaVu Sans Mono:size=8
+xterm*faceName:         DejaVu Sans Mono:size=14
 xterm*dynamicColors:    true
 xterm*utf8:             2
 xterm*eightBitInput:    true
@@ -298,3 +300,5 @@ xterm*background:       black
 ! Evince
 ! **************************************************************
 ! Evince*font:  xft:inconsolata:style=Normal:size=10:antialias=true:hinting=true
+!
+Chromium*background:   black
